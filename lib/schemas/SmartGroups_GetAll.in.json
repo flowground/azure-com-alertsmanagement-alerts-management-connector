@@ -1,0 +1,110 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "targetResource": {
+            "required": false,
+            "type": "string"
+        },
+        "targetResourceGroup": {
+            "required": false,
+            "type": "string"
+        },
+        "targetResourceType": {
+            "required": false,
+            "type": "string"
+        },
+        "monitorService": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "Platform",
+                "Application Insights",
+                "Log Analytics",
+                "Zabbix",
+                "SCOM",
+                "Nagios",
+                "Infrastructure Insights",
+                "ActivityLog Administrative",
+                "ActivityLog Security",
+                "ActivityLog Recommendation",
+                "ActivityLog Policy",
+                "ActivityLog Autoscale",
+                "ServiceHealth",
+                "SmartDetector"
+            ]
+        },
+        "monitorCondition": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "Fired",
+                "Resolved"
+            ]
+        },
+        "severity": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "Sev0",
+                "Sev1",
+                "Sev2",
+                "Sev3",
+                "Sev4"
+            ]
+        },
+        "smartGroupState": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "New",
+                "Acknowledged",
+                "Closed"
+            ]
+        },
+        "timeRange": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "1h",
+                "1d",
+                "7d",
+                "30d"
+            ]
+        },
+        "pageCount": {
+            "required": false,
+            "type": "integer"
+        },
+        "sortBy": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "alertsCount",
+                "state",
+                "severity",
+                "startDateTime",
+                "lastModifiedDateTime"
+            ]
+        },
+        "sortOrder": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "asc",
+                "desc"
+            ]
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "2018-11-02-privatepreview",
+                "2018-05-05"
+            ]
+        }
+    }
+}

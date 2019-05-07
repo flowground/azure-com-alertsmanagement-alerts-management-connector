@@ -1,0 +1,17 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroup": {
+            "required": true,
+            "type": "string"
+        },
+        "actionRuleName": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}

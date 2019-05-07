@@ -1,0 +1,322 @@
+{
+    "title": "Azure Alerts Management Service Resource Provider",
+    "description": "REST APIs for Azure Alerts Management Service.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/alertsmanagement-AlertsManagement/2018-11-02-privatepreview/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://azure.local/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Operations_List": {
+            "main": "./lib/actions/Operations_List.js",
+            "title": "List all operations available through Azure Alerts Management Resource Provider.",
+            "description": "List all operations available through Azure Alerts Management Resource Provider.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Operations_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ActionRules_GetAll_Subscription": {
+            "main": "./lib/actions/ActionRules_GetAll_Subscription.js",
+            "title": "Get all action rule in a given subscription",
+            "description": "List all action rules of the subscription and given input filters",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ActionRules_GetAll_Subscription.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Alerts_GetAll": {
+            "main": "./lib/actions/Alerts_GetAll.js",
+            "title": "List all the existing alerts, where the results can be selective by passing multiple filter parameters including time range and sorted on specific fields. ",
+            "description": "List all the existing alerts, where the results can be selective by passing multiple filter parameters including time range and sorted on specific fields. ",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Alerts_GetAll.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Alerts_GetById": {
+            "main": "./lib/actions/Alerts_GetById.js",
+            "title": "Get a specific alert.",
+            "description": "Get information related to a specific alert",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Alerts_GetById.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Alerts_ChangeState": {
+            "main": "./lib/actions/Alerts_ChangeState.js",
+            "title": "Change the state of the alert.",
+            "description": "Change the state of the alert.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Alerts_ChangeState.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Alerts_GetHistory": {
+            "main": "./lib/actions/Alerts_GetHistory.js",
+            "title": "Get the history of the changes of an alert.",
+            "description": "Get the history of the changes of an alert.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Alerts_GetHistory.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Alerts_GetSummary": {
+            "main": "./lib/actions/Alerts_GetSummary.js",
+            "title": "Summary of alerts with the count each severity.",
+            "description": "Summary of alerts with the count each severity.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Alerts_GetSummary.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "SmartGroups_GetAll": {
+            "main": "./lib/actions/SmartGroups_GetAll.js",
+            "title": "Get all smartGroups within the subscription",
+            "description": "List all the smartGroups within the specified subscription. ",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/SmartGroups_GetAll.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "SmartGroups_GetById": {
+            "main": "./lib/actions/SmartGroups_GetById.js",
+            "title": "Get information of smart alerts group.",
+            "description": "Get details of smart group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/SmartGroups_GetById.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "SmartGroups_ChangeState": {
+            "main": "./lib/actions/SmartGroups_ChangeState.js",
+            "title": "Change the state from unresolved to resolved and all the alerts within the smart group will also be resolved.",
+            "description": "Change the state from unresolved to resolved and all the alerts within the smart group will also be resolved.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/SmartGroups_ChangeState.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "SmartGroups_GetHistory": {
+            "main": "./lib/actions/SmartGroups_GetHistory.js",
+            "title": "Get the history of the changes of smart group.",
+            "description": "Get the history of the changes of smart group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/SmartGroups_GetHistory.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ActionRules_GetAll_ResourceGroup": {
+            "main": "./lib/actions/ActionRules_GetAll_ResourceGroup.js",
+            "title": "Get all action rules created in a resource group",
+            "description": "List all action rules of the subscription, created in given resource group and given input filters",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ActionRules_GetAll_ResourceGroup.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ActionRules_Delete": {
+            "main": "./lib/actions/ActionRules_Delete.js",
+            "title": "Delete action rule",
+            "description": "Deletes a given action rule",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ActionRules_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ActionRules_GetByName": {
+            "main": "./lib/actions/ActionRules_GetByName.js",
+            "title": "Get action rule by name",
+            "description": "Get a specific action rule",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ActionRules_GetByName.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ActionRules_Patch": {
+            "main": "./lib/actions/ActionRules_Patch.js",
+            "title": "Patch action rule",
+            "description": "Update enabled flag and/or tags for the given action rule",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ActionRules_Patch.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "ActionRules_CreateUpdate": {
+            "main": "./lib/actions/ActionRules_CreateUpdate.js",
+            "title": "Create/update an action rule",
+            "description": "Creates/Updates a specific action rule",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/ActionRules_CreateUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

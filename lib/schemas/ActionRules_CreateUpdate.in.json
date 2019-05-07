@@ -1,0 +1,505 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroup": {
+            "required": true,
+            "type": "string"
+        },
+        "actionRuleName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "allOf": [
+                        {
+                            "description": "An azure resource object",
+                            "properties": {
+                                "id": {
+                                    "description": "Azure resource Id",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "description": "Azure resource name",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "description": "Azure resource type",
+                                    "readOnly": true,
+                                    "type": "string"
+                                }
+                            },
+                            "x-ms-azure-resource": true,
+                            "type": "object"
+                        }
+                    ],
+                    "description": "An azure managed resource object",
+                    "properties": {
+                        "location": {
+                            "description": "Resource location",
+                            "type": "string",
+                            "x-ms-mutability": [
+                                "create",
+                                "read"
+                            ]
+                        },
+                        "tags": {
+                            "additionalProperties": {
+                                "type": "string"
+                            },
+                            "description": "Resource tags"
+                        }
+                    },
+                    "required": [
+                        "location"
+                    ],
+                    "x-ms-azure-resource": true,
+                    "type": "object"
+                }
+            ],
+            "description": "Action rule object containing target scope, conditions and suppression logic",
+            "properties": {
+                "properties": {
+                    "description": "Action rule properties defining scope, conditions, suppression logic for action rule",
+                    "properties": {
+                        "conditions": {
+                            "description": "Conditions in alert instance to be matched for a given action rule. Default value is all. Multiple values could be provided with comma separation.",
+                            "properties": {
+                                "alertRuleId": {
+                                    "description": "condition to trigger an action rule",
+                                    "properties": {
+                                        "operator": {
+                                            "description": "operator for a given condition",
+                                            "enum": [
+                                                "Equals",
+                                                "NotEquals",
+                                                "Contains",
+                                                "DoesNotContain"
+                                            ],
+                                            "type": "string",
+                                            "x-ms-enum": {
+                                                "modelAsString": true,
+                                                "name": "ScopeType"
+                                            }
+                                        },
+                                        "values": {
+                                            "description": "list of values to match for a given condition.",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "applicationInsightsSearchResults": {
+                                    "description": "condition to trigger an action rule",
+                                    "properties": {
+                                        "operator": {
+                                            "description": "operator for a given condition",
+                                            "enum": [
+                                                "Equals",
+                                                "NotEquals",
+                                                "Contains",
+                                                "DoesNotContain"
+                                            ],
+                                            "type": "string",
+                                            "x-ms-enum": {
+                                                "modelAsString": true,
+                                                "name": "ScopeType"
+                                            }
+                                        },
+                                        "values": {
+                                            "description": "list of values to match for a given condition.",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "description": {
+                                    "description": "condition to trigger an action rule",
+                                    "properties": {
+                                        "operator": {
+                                            "description": "operator for a given condition",
+                                            "enum": [
+                                                "Equals",
+                                                "NotEquals",
+                                                "Contains",
+                                                "DoesNotContain"
+                                            ],
+                                            "type": "string",
+                                            "x-ms-enum": {
+                                                "modelAsString": true,
+                                                "name": "ScopeType"
+                                            }
+                                        },
+                                        "values": {
+                                            "description": "list of values to match for a given condition.",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "logAnalyticsSearchResults": {
+                                    "description": "condition to trigger an action rule",
+                                    "properties": {
+                                        "operator": {
+                                            "description": "operator for a given condition",
+                                            "enum": [
+                                                "Equals",
+                                                "NotEquals",
+                                                "Contains",
+                                                "DoesNotContain"
+                                            ],
+                                            "type": "string",
+                                            "x-ms-enum": {
+                                                "modelAsString": true,
+                                                "name": "ScopeType"
+                                            }
+                                        },
+                                        "values": {
+                                            "description": "list of values to match for a given condition.",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "monitorCondition": {
+                                    "description": "condition to trigger an action rule",
+                                    "properties": {
+                                        "operator": {
+                                            "description": "operator for a given condition",
+                                            "enum": [
+                                                "Equals",
+                                                "NotEquals",
+                                                "Contains",
+                                                "DoesNotContain"
+                                            ],
+                                            "type": "string",
+                                            "x-ms-enum": {
+                                                "modelAsString": true,
+                                                "name": "ScopeType"
+                                            }
+                                        },
+                                        "values": {
+                                            "description": "list of values to match for a given condition.",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "monitorService": {
+                                    "description": "condition to trigger an action rule",
+                                    "properties": {
+                                        "operator": {
+                                            "description": "operator for a given condition",
+                                            "enum": [
+                                                "Equals",
+                                                "NotEquals",
+                                                "Contains",
+                                                "DoesNotContain"
+                                            ],
+                                            "type": "string",
+                                            "x-ms-enum": {
+                                                "modelAsString": true,
+                                                "name": "ScopeType"
+                                            }
+                                        },
+                                        "values": {
+                                            "description": "list of values to match for a given condition.",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "severity": {
+                                    "description": "condition to trigger an action rule",
+                                    "properties": {
+                                        "operator": {
+                                            "description": "operator for a given condition",
+                                            "enum": [
+                                                "Equals",
+                                                "NotEquals",
+                                                "Contains",
+                                                "DoesNotContain"
+                                            ],
+                                            "type": "string",
+                                            "x-ms-enum": {
+                                                "modelAsString": true,
+                                                "name": "ScopeType"
+                                            }
+                                        },
+                                        "values": {
+                                            "description": "list of values to match for a given condition.",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "signalType": {
+                                    "description": "condition to trigger an action rule",
+                                    "properties": {
+                                        "operator": {
+                                            "description": "operator for a given condition",
+                                            "enum": [
+                                                "Equals",
+                                                "NotEquals",
+                                                "Contains",
+                                                "DoesNotContain"
+                                            ],
+                                            "type": "string",
+                                            "x-ms-enum": {
+                                                "modelAsString": true,
+                                                "name": "ScopeType"
+                                            }
+                                        },
+                                        "values": {
+                                            "description": "list of values to match for a given condition.",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "targetResource": {
+                                    "description": "condition to trigger an action rule",
+                                    "properties": {
+                                        "operator": {
+                                            "description": "operator for a given condition",
+                                            "enum": [
+                                                "Equals",
+                                                "NotEquals",
+                                                "Contains",
+                                                "DoesNotContain"
+                                            ],
+                                            "type": "string",
+                                            "x-ms-enum": {
+                                                "modelAsString": true,
+                                                "name": "ScopeType"
+                                            }
+                                        },
+                                        "values": {
+                                            "description": "list of values to match for a given condition.",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "targetResourceGroup": {
+                                    "description": "condition to trigger an action rule",
+                                    "properties": {
+                                        "operator": {
+                                            "description": "operator for a given condition",
+                                            "enum": [
+                                                "Equals",
+                                                "NotEquals",
+                                                "Contains",
+                                                "DoesNotContain"
+                                            ],
+                                            "type": "string",
+                                            "x-ms-enum": {
+                                                "modelAsString": true,
+                                                "name": "ScopeType"
+                                            }
+                                        },
+                                        "values": {
+                                            "description": "list of values to match for a given condition.",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "targetResourceType": {
+                                    "description": "condition to trigger an action rule",
+                                    "properties": {
+                                        "operator": {
+                                            "description": "operator for a given condition",
+                                            "enum": [
+                                                "Equals",
+                                                "NotEquals",
+                                                "Contains",
+                                                "DoesNotContain"
+                                            ],
+                                            "type": "string",
+                                            "x-ms-enum": {
+                                                "modelAsString": true,
+                                                "name": "ScopeType"
+                                            }
+                                        },
+                                        "values": {
+                                            "description": "list of values to match for a given condition.",
+                                            "items": {
+                                                "type": "string"
+                                            },
+                                            "type": "array"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "createdAt": {
+                            "description": "Creation time of action rule. Date-Time in ISO-8601 format.",
+                            "format": "date-time",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "createdBy": {
+                            "description": "Created by user name.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "description": {
+                            "description": "Description of action rule",
+                            "type": "string"
+                        },
+                        "lastModifiedAt": {
+                            "description": "Last updated time of action rule. Date-Time in ISO-8601 format.",
+                            "format": "date-time",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "lastModifiedBy": {
+                            "description": "Last modified by user name.",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "resourceGroup": {
+                            "description": "Resource group where action rule is stored",
+                            "readOnly": true,
+                            "type": "string"
+                        },
+                        "scope": {
+                            "description": "Target scope for a given action rule. By default scope will be the subscription. User can also provide list of resource groups or list of resources from the scope subscription as well.",
+                            "properties": {
+                                "type": {
+                                    "description": "type of target scope",
+                                    "enum": [
+                                        "ResourceGroup",
+                                        "Resource"
+                                    ],
+                                    "type": "string",
+                                    "x-ms-enum": {
+                                        "modelAsString": true,
+                                        "name": "ScopeType"
+                                    }
+                                },
+                                "values": {
+                                    "description": "list of ARM IDs of the given scope type which will be the target of the given action rule.",
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "type": "array"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "status": {
+                            "description": "Indicates if the given action rule is enabled or disabled",
+                            "enum": [
+                                "enabled",
+                                "disabled"
+                            ],
+                            "type": "string",
+                            "x-ms-enum": {
+                                "modelAsString": true,
+                                "name": "ActionRuleStatus"
+                            }
+                        },
+                        "suppressionConfig": {
+                            "description": "Suppression logic for a given action rule",
+                            "discriminator": {
+                                "propertyName": "recurrenceType"
+                            },
+                            "properties": {
+                                "recurrenceType": {
+                                    "description": "Specifies when the suppression should be applied",
+                                    "enum": [
+                                        "Always",
+                                        "Once",
+                                        "Daily",
+                                        "Weekly",
+                                        "Monthly"
+                                    ],
+                                    "type": "string",
+                                    "x-ms-enum": {
+                                        "modelAsString": true,
+                                        "name": "SuppressionType"
+                                    }
+                                },
+                                "schedule": {
+                                    "description": "Schedule for a given suppression configuration.",
+                                    "properties": {
+                                        "endDate": {
+                                            "description": "End date for suppression",
+                                            "type": "string"
+                                        },
+                                        "endTime": {
+                                            "description": "End date for suppression",
+                                            "type": "string"
+                                        },
+                                        "recurrenceValues": {
+                                            "description": "Specifies the values for recurrence pattern",
+                                            "items": {
+                                                "type": "integer"
+                                            },
+                                            "type": "array"
+                                        },
+                                        "startDate": {
+                                            "description": "Start date for suppression",
+                                            "type": "string"
+                                        },
+                                        "startTime": {
+                                            "description": "Start time for suppression",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "required": [
+                                "recurrenceType"
+                            ],
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "type": "object"
+        }
+    }
+}

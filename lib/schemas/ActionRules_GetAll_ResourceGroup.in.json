@@ -1,0 +1,56 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroup": {
+            "required": true,
+            "type": "string"
+        },
+        "targetResourceGroup": {
+            "required": false,
+            "type": "string"
+        },
+        "targetResourceType": {
+            "required": false,
+            "type": "string"
+        },
+        "targetResource": {
+            "required": false,
+            "type": "string"
+        },
+        "severity": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "Sev0",
+                "Sev1",
+                "Sev2",
+                "Sev3",
+                "Sev4"
+            ]
+        },
+        "monitorService": {
+            "required": false,
+            "type": "string",
+            "enum": [
+                "Platform",
+                "Application Insights",
+                "Log Analytics",
+                "Zabbix",
+                "SCOM",
+                "Nagios",
+                "Infrastructure Insights",
+                "ActivityLog Administrative",
+                "ActivityLog Security",
+                "ActivityLog Recommendation",
+                "ActivityLog Policy",
+                "ActivityLog Autoscale",
+                "ServiceHealth",
+                "SmartDetector"
+            ]
+        }
+    }
+}

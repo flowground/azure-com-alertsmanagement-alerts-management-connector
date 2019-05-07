@@ -1,0 +1,30 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "smartGroupId": {
+            "required": true,
+            "type": "string"
+        },
+        "newState": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "New",
+                "Acknowledged",
+                "Closed"
+            ]
+        },
+        "api_version": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "2018-11-02-privatepreview",
+                "2018-05-05"
+            ]
+        }
+    }
+}

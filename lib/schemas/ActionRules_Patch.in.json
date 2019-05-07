@@ -1,0 +1,39 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroup": {
+            "required": true,
+            "type": "string"
+        },
+        "actionRuleName": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "Properties supported by patch",
+            "properties": {
+                "status": {
+                    "description": "Indicates if the given action rule is enabled or disabled",
+                    "enum": [
+                        "enabled",
+                        "disabled"
+                    ],
+                    "type": "string",
+                    "x-ms-enum": {
+                        "modelAsString": true,
+                        "name": "ActionRuleStatus"
+                    }
+                },
+                "tags": {
+                    "description": "tags to be updated",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        }
+    }
+}
